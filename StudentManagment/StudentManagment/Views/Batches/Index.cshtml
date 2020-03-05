@@ -1,0 +1,37 @@
+﻿@model IEnumerable<StudentManagment.Models.Batch>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2></h2>
+
+<p>
+    <a class="btn btn-primary btn-sm" asp-action="Create">Create New</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>BatchName</th>
+            <th>Year</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BatchName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td class="text-right">
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
